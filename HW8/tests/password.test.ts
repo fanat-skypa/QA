@@ -22,4 +22,5 @@ describe('calculatePasswordStrength', () => {
         expect(calculatePasswordStrength('QWE')).toBe('Very Weak')
     })
 
+    
 })

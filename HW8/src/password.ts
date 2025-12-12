@@ -13,4 +13,5 @@ export function calculatePasswordStrength(password: string): string {
     if (strength === 3) return "Weak"
     if (strength === 4) return "Moderate"
     return "Strong"
+    
 }                                                                                               
