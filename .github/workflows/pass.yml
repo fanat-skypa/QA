@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'hw8/src/password.ts'
-      - 'hw8/tests/password.test.ts'
+      - 'HW8/src/password.ts'
+      - 'HW8/tests/password.test.ts'
   push:
     branches:
       - main
     paths:
-      - 'src/password.ts'
-      - 'tests/password.test.ts'
+      - 'HW8/src/password.ts'
+      - 'HW8/tests/password.test.ts'
 
 jobs:
   autotests-run:

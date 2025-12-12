@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'hw8/src/url-checker.ts'
-      - 'hw8/tests/url-checker.test.ts'
+      - 'HW8/src/url-checker.ts'
+      - 'HW8/tests/url-checker.test.ts'
 
   push:
     branches:
       - main
     paths:
-      - 'src/url-checker.ts'
-      - 'tests/url-checker.test.ts'
+      - 'HW8/src/url-checker.ts'
+      - 'HW8/tests/url-checker.test.ts'
 
 
 jobs:
