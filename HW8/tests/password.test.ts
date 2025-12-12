@@ -1,5 +1,7 @@
 import { calculatePasswordStrength } from '../src/password'
 
+
+// Tests for calculatePasswordStrength function
 describe('calculatePasswordStrength', () => {
 
     test('short and simple → Very Weak', () => {
@@ -22,5 +24,5 @@ describe('calculatePasswordStrength', () => {
         expect(calculatePasswordStrength('QWE')).toBe('Very Weak')
     })
 
-    
+
 })

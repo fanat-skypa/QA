@@ -1,4 +1,5 @@
 export function calculatePasswordStrength(password: string): string {
+    // Initialize strength score
     let strength = 0
 
     if (password.length >= 8) strength += 1
@@ -13,5 +14,5 @@ export function calculatePasswordStrength(password: string): string {
     if (strength === 3) return "Weak"
     if (strength === 4) return "Moderate"
     return "Strong"
-    
+
 }                                                                                               

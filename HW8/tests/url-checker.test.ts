@@ -1,5 +1,6 @@
 import {LinkChecker} from '../src/url-checker'
 
+// Tests for LinkChecker class
 
 describe('LinkChecker', () => {
     let linkChecker: LinkChecker;
@@ -30,5 +31,5 @@ describe('LinkChecker', () => {
     test('should return true for valid URL with path', () => {
         expect(linkChecker.isValidUrl('http://www.example.com/path/to/page')).toBeTruthy()
     })
-    
+
 });
