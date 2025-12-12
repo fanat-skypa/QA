@@ -1,4 +1,4 @@
-name: Run tests for lesson 8
+name: lesson 8 tests - password.ts
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Debug folder structure
         run: ls -R   # показывает все файлы и папки
-        
+
       - name: Checkout code
         uses: actions/checkout@v3
 

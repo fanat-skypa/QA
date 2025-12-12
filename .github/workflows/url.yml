@@ -1,5 +1,4 @@
-name: Run tests for lesson 8
-
+name: lesson 8 url tests
 on:
   pull_request:
     branches:
