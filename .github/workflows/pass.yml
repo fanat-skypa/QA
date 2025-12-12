@@ -3,13 +3,13 @@ name: Run tests for lesson 8
 on:
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - 'HW8/src/password.ts'
       - 'HW8/tests/password.test.ts'
   push:
     branches:
-      - main
+      - master
     paths:
       - 'HW8/src/password.ts'
       - 'HW8/tests/password.test.ts'

@@ -3,14 +3,14 @@ name: Run tests for lesson 8
 on:
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - 'HW8/src/url-checker.ts'
       - 'HW8/tests/url-checker.test.ts'
 
   push:
     branches:
-      - main
+      - master
     paths:
       - 'HW8/src/url-checker.ts'
       - 'HW8/tests/url-checker.test.ts'
