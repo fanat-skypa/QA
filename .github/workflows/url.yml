@@ -19,7 +19,7 @@ on:
 jobs:
   autotests-run:
     runs-on: ubuntu-latest
-    
+
     defaults:
       run:
         working-directory: HW8
@@ -34,7 +34,7 @@ jobs:
           node-version: '22.x'
 
       - name: Set up dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run tests
-        run: npm run test-right-now1
+        run: npm test
