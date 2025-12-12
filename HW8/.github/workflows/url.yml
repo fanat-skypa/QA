@@ -30,7 +30,11 @@ jobs:
           node-version: '22.x'
 
       - name: Set up dependencies
-        run: npm install
+        run: npm ci
+        working-directory: HW8
+
 
       - name: Run tests
-        run: npm run test-right-now1
+        run: npm test
+        working-directory: HW8
+

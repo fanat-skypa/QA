@@ -33,6 +33,9 @@ jobs:
 
       - name: Set up dependencies
         run: npm ci
+        working-directory: HW8
+
 
       - name: Run tests
         run: npm test
+        working-directory: HW8
