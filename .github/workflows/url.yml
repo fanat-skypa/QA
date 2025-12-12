@@ -25,6 +25,9 @@ jobs:
         working-directory: HW8
 
     steps:
+      - name: Debug folder structure
+        run: ls -R   # показывает все файлы и папки
+
       - name: Checkout code
         uses: actions/checkout@v3
 
