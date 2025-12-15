@@ -1,48 +1,42 @@
-name: Check formatting, linting, and run tests
+name: lesson 8 tests - password.ts
 
 on:
-  push:
-    branches:
-      [main, develop]
   pull_request:
     branches:
-      - main
+      - master
+    paths:
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/simple-solution-api.spec.ts'
+  push:
+    branches:
+      - master
+    paths:
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/simple-solution-api.spec.ts'
 
 jobs:
-  format-lint-test:
+  autotests-run:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: HW9
+
     steps:
+
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      - name: Install dependencies
+      - name: Set up dependencies
         run: npm ci
+        working-directory: HW9
 
-      - name: Run Prettier check
-        run: |
-            echo "Running Prettier to check for formatting issues..."
-            npm run prettier:check
 
-      - name: Run ESLint check
-        run: |
-            echo "Running ESLint to check for linting issues..."
-            npm run lint 
-
-      - name: Run TypeScript compile check
-        run: |
-          echo "Running TypeScript compiler to check for type issues..."
-          npx tsc --noEmit
-
-      - name: Run Playwright API tests
-        env:
-          USER: ${{ secrets.USER }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          echo "Running Playwright to execute API tests..."
-          npx playwright test
+      - name: Run tests
+        run: npm test
+        working-directory: HW9

@@ -5,14 +5,14 @@ on:
     branches:
       - master
     paths:
-      - 'HW8/src/password.ts'
-      - 'HW8/tests/password.test.ts'
+      - 'HW9/tests/dto/OrderDTO.ts'
+      - 'HW9/tests/simple-solution-api.spec.ts'
   push:
     branches:
       - master
     paths:
-      - 'HW8/src/password.ts'
-      - 'HW8/tests/password.test.ts'
+      - 'HW9/tests/dto/OrderDTO.ts'
+      - 'HW9/tests/simple-solution-api.spec.ts'
 
 jobs:
   autotests-run:
@@ -20,7 +20,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: HW8
+        working-directory: HW9
 
     steps:
 
@@ -34,9 +34,9 @@ jobs:
 
       - name: Set up dependencies
         run: npm ci
-        working-directory: HW8
+        working-directory: HW9
 
 
       - name: Run tests
         run: npm test
-        working-directory: HW8
+        working-directory: HW9
