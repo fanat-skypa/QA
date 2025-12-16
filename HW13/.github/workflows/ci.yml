@@ -2,7 +2,7 @@ name: HW13
 on:
   push:
     branches:
-      - HW_13
+      - HW13_new
     paths:
       - 'tests/DTO/UserDTO'
       - 'tests/users-array-tests.test.ts'
@@ -10,7 +10,7 @@ on:
       - 'tests/users-empty.test.ts'
   pull_request:
     branches:
-      - HW_13
+      - HW13_new
     paths:
       - 'tests/DTO/UserDTO'
       - 'tests/users-array-tests.test.ts'
@@ -46,7 +46,7 @@ jobs:
         working-directory: HW13
 
       - name: Run empty users test first
-        run: npx playwright test tests/users-empty.test.ts
+        run: npx playwright test ./tests/users-empty.test.ts
 
       - name: Run all other tests
-        run: npx playwright test --exclude tests/users-empty.test.ts
+        run: npx playwright test --exclude ./tests/users-empty.test.ts
