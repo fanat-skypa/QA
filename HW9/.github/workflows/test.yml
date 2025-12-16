@@ -1,0 +1,44 @@
+name: lesson 9 tests - simple-solution-api.spec.ts
+
+on:
+  pull_request:
+    branches:
+      - hw9
+    paths:
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/dto/order-schema.ts'
+      - 'tests/simple-solution-api.spec.ts'
+  push:
+    branches:
+      - hw9
+    paths:
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/dto/order-schema.ts'
+      - 'tests/simple-solution-api.spec.ts'
+
+jobs:
+  autotests-run:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HW9
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - name: Set up dependencies
+        run: npm ci
+        working-directory: HW9
+
+
+      - name: Run tests
+        run: npm test
+        working-directory: HW9
