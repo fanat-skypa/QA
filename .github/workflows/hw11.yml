@@ -44,5 +44,5 @@ jobs:
 
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          API_LOGIN: ${{ secrets.API_LOGIN }}
+          API_LOGIN: ${{ secrets.API_USERNAME }}
           API_PASSWORD: ${{ secrets.API_PASSWORD }}       
