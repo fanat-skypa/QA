@@ -2,10 +2,10 @@ name: HW13
 on:
   push:
     branches:
-      - HW_13_new
+      - HW_13_fixed
   pull_request:
     branches:
-      - HW_13_new
+      - HW_13_fixed
 
 jobs:
   build:
