@@ -2,7 +2,7 @@ name: HW13
 on:
   push:
     branches:
-      - HW_13_fixed
+      - HW_13
     paths:
       - 'tests/DTO/UserDTO'
       - 'tests/users-array-tests.test.ts'
@@ -10,7 +10,7 @@ on:
       - 'tests/users-empty.test.ts'
   pull_request:
     branches:
-      - HW_13_fixed
+      - HW_13
     paths:
       - 'tests/DTO/UserDTO'
       - 'tests/users-array-tests.test.ts'
