@@ -1,0 +1,50 @@
+name: lesson 12 tests.ts
+
+
+on:
+  pull_request:
+    branches:
+      - HW_12
+    paths:
+      - 'tests/dto/LoginDTO.ts'
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/auth-order-without-client.spec.ts'
+      - 'tests/auth-order-with-client.spec.ts'
+  push:
+    branches:
+      - HW_12
+    paths:
+      - 'tests/dto/LoginDTO.ts'
+      - 'tests/dto/OrderDTO.ts'
+      - 'tests/auth-order-without-client.spec.ts'
+      - 'tests/auth-order-with-client.spec.ts'
+
+jobs:
+  autotests-run:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HW12
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - run: npm ci
+        working-directory: HW12
+
+      - run: npx playwright install --with-deps
+        working-directory: HW12
+
+      - run: npx playwright test
+        working-directory: HW12
+        env:
+          API_LOGIN: ${{ secrets.API_USERNAME }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}  
