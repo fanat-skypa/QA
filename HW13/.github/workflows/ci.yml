@@ -3,9 +3,19 @@ on:
   push:
     branches:
       - HW_13_fixed
+    paths:
+      - 'tests/DTO/UserDTO'
+      - 'tests/user-array-tests.test.ts'
+      - 'tests/user-controller.test.ts'
+      - 'tests/user-empty.test.ts'
   pull_request:
     branches:
       - HW_13_fixed
+    paths:
+      - 'tests/DTO/UserDTO'
+      - 'tests/user-array-tests.test.ts'
+      - 'tests/user-controller.test.ts'
+      - 'tests/user-empty.test.ts'
 
 jobs:
   build:
