@@ -5,47 +5,57 @@ on:
     branches:
       - HW13_clean
     paths:
-      - 'HW13/tests/DTO/UserDTO'
+      - 'HW13/tests/DTO/UserDTO/**'
       - 'HW13/tests/user-array-tests.test.ts'
       - 'HW13/tests/user-controller.test.ts'
-      - 'HW13/tests/user-empty.test.ts'
+      - 'HW13/tests/users-empty.test.ts'
   pull_request:
     branches:
       - HW13_clean
     paths:
-      - 'HW13/tests/DTO/UserDTO'
+      - 'HW13/tests/DTO/UserDTO/**'
       - 'HW13/tests/user-array-tests.test.ts'
       - 'HW13/tests/user-controller.test.ts'
-      - 'HW13/tests/user-empty.test.ts'
+      - 'HW13/tests/users-empty.test.ts'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Клонируем репозиторий
       - name: Check out repository
         uses: actions/checkout@v3
 
+      # 2. Устанавливаем Node.js (LTS 20)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '20'
 
+      # 3. Устанавливаем зависимости в папке HW13
       - name: Install dependencies
         run: npm install
         working-directory: HW13
 
+      # 4. Поднимаем Docker Compose
       - name: Set up Docker Compose
         uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-            compose-file: HW13/docker-compose.yaml
-            up-flags: -d
+          compose-file: HW13/docker-compose.yaml
+          up-flags: -d
 
-      - run: npx playwright install --with-deps
+      # 5. Устанавливаем Playwright и браузеры
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
         working-directory: HW13
 
+      # 6. Запуск теста с пустыми пользователями
       - name: Run empty users test first
-        run: npx playwright test HW13/tests/users-empty.test.ts
+        run: npx playwright test tests/users-empty.test.ts
+        working-directory: HW13
 
+      # 7. Запуск остальных тестов
       - name: Run all other tests
-        run: npx playwright test --exclude HW13/tests/users-empty.test.ts
+        run: npx playwright test --exclude tests/users-empty.test.ts
+        working-directory: HW13
