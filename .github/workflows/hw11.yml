@@ -1,0 +1,48 @@
+name: lesson 9 tests - credit-desicion-api.spec.ts
+
+
+on:
+  pull_request:
+    branches:
+      - HW_11
+    paths:
+      - 'HW11/tests/dto/LoginDTO.ts'
+      - 'HW11/tests/auth-tests.spec.ts'
+  push:
+    branches:
+      - HW_11
+    paths:
+      - 'HW11/tests/dto/LoginDTO.ts'
+      - 'HW11/tests/auth-tests.spec.ts'
+
+jobs:
+  autotests-run:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HW11
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - run: npm ci
+        working-directory: HW11
+
+      - run: npx playwright install --with-deps
+        working-directory: HW11
+
+      - run: npx playwright test
+        working-directory: HW11
+
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          API_LOGIN: ${{ secrets.API_LOGIN }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}       
