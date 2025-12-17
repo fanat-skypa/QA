@@ -1,0 +1,45 @@
+name: lesson 9 tests - credit-desicion-api.spec.ts
+
+
+on:
+  pull_request:
+    branches:
+      - HW_10
+    paths:
+      - 'HW10/tests/dto/CreditRiskAnswerDTO.ts'
+      - 'HW10/tests/dto/CreditRiskRequestDTO.ts'
+      - 'HW10/tests/credit-desicion-api.spec.ts'
+  push:
+    branches:
+      - HW_10
+    paths:
+      - 'HW10/tests/dto/CreditRiskAnswerDTO.ts'
+      - 'HW10/tests/dto/CreditRiskRequestDTO.ts'
+      - 'HW10/tests/credit-desicion-api.spec.ts'
+
+jobs:
+  autotests-run:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HW10
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - run: npm ci
+        working-directory: HW10
+
+      - run: npx playwright install --with-deps
+        working-directory: HW10  
+
+      - run: npx playwright test
+        working-directory: HW10
