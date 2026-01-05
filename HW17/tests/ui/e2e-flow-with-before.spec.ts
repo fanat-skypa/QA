@@ -47,6 +47,13 @@ test('TL-17-6 login and create order and check order found page', async ({ page 
   await foundPage.checkElementVisibility(foundPage.orderName)
 })
 
+test('TL-17-7 log out', async () => {
+  const orderCreationPage = await authPage.signIn(USERNAME, PASSWORD)
+  await orderCreationPage.checkInnerComponentsVisible()
+  await orderCreationPage.logoutButton.click()
+  await expect(authPage.signInButton).toBeVisible()
+})
+
 test('TL-18-1 Check not found page', async ({ page }) => {
   const notFoundPage = new NotFoundPage(page, `${SERVICE_URL}/orders/12341234123412341234`)
   const orderPage = new OrderPage(page)

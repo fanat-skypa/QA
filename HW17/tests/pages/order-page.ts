@@ -17,7 +17,10 @@ export class OrderPage extends BasePage {
   // search popup elements
   readonly searchOrderPopup: Locator
   readonly orderIdInputField: Locator
-  readonly trackButton
+  readonly trackButton: Locator
+
+  // logout button
+  readonly logoutButton: Locator
 
   constructor(page: Page, url?: string) {
     super(page, url ? url : SERVICE_URL)
@@ -36,6 +39,8 @@ export class OrderPage extends BasePage {
     this.searchOrderPopup = page.getByTestId('searchOrder-popup')
     this.orderIdInputField = this.searchOrderPopup.getByTestId('searchOrder-input')
     this.trackButton = this.searchOrderPopup.getByTestId('searchOrder-submitButton')
+
+    this.logoutButton = page.getByTestId('logout-button')
   }
 
   async checkInnerComponentsVisible(): Promise<void> {
