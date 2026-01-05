@@ -4,14 +4,14 @@ on:
     branches:
       - HW_17_clean
     paths:
-      - '**'
+      - 'HW17/**'
 
   pull_request:
     branches:
       - HW_17_clean
       - master
     paths:
-      - '**'
+      - 'HW17/**'
 
 
 
