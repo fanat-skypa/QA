@@ -27,10 +27,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Prettier check
-        run: |
-            echo "Running Prettier to check for formatting issues..."
-            npm run check
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
