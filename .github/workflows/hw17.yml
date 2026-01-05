@@ -1,45 +1,68 @@
 name: Playwright Tests
+
 on:
   push:
     branches:
       - HW_17_clean
     paths:
       - 'HW17/**'
-
   pull_request:
     branches:
       - HW_17_clean
     paths:
       - 'HW17/**'
 
-
-
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
+      # Проверяем репозиторий
       - uses: actions/checkout@v4
+
+      # Устанавливаем Node
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
+      # Устанавливаем зависимости
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd HW17
+          npm install
 
+      # ESLint
+      - name: Run ESLint check
+        run: |
+          cd HW17
+          npm run lint
 
+      # Prettier
+      - name: Run Prettier check
+        run: |
+          cd HW17
+          npm run check
+
+      # Установка браузеров Playwright
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: |
+          cd HW17
+          npx playwright install --with-deps
 
-      - name: Run Playwright tests HW17/tests
+      # Запуск тестов Playwright только из HW17/tests
+      - name: Run Playwright tests
         env:
           URL: ${{ secrets.URL }}
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-        run: npx playwright test
+        run: |
+          cd HW17
+          npx playwright test tests
 
+      # Загрузка отчета
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: playwright-report/
+          path: HW17/playwright-report/
           retention-days: 30
