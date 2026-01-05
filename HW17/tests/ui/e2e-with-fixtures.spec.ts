@@ -10,7 +10,7 @@ test.beforeEach(async ({ context, auth, orderPage }) => {
 
 const newOrder = {
   customerName: 'customerName',
-  customerPhone: 'customerPhone',
+  customerPhone: '2133123123',
   comment: 'comment',
 }
 
