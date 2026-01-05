@@ -9,7 +9,6 @@ on:
   pull_request:
     branches:
       - HW_17_clean
-      - master
     paths:
       - 'HW17/**'
 
