@@ -63,8 +63,9 @@ export class Home {
     async createItems(num: number) {
         const items = [];
 
-        for (let i = 1; i <= num; i++) { // <=1 символ не принимает, а я чпокался с этим пол часа, поэтому с 10 отсчет
-            items.push(await this.createItem(String(i) + " TEST"));
+        for (let i = 1; i <= num; i++) { 
+            items.push(await this.createItem(String(i) + " TEST")); // 1 символ не принимает - чпокался с этим пол часа, просто тест к названию добавил
+        
 
         }
         return items;
