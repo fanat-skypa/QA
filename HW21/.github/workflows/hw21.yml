@@ -1,4 +1,5 @@
-name: Test
+name: HW21 Tests
+
 on:
   workflow_dispatch:
   pull_request:
@@ -7,21 +8,25 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  hw21-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
+        working-directory: HW21
 
-      - name: Run application locally
-        run: |
-          npm start & 
+      - name: Build app
+        run: npm run build   # если нужен build
+        working-directory: HW21
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
+        working-directory: HW21
 
       - name: Run HW21 tests
-        run: npx playwright test --grep HW21
+        run: npx playwright test
+        working-directory: HW21
