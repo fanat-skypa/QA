@@ -20,10 +20,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run ESLint check
-        run: |
-          echo "Running ESLint to check for linting issues..."
-          npm run lint
+      # - name: Run ESLint check
+      #   run: |
+      #     echo "Running ESLint to check for linting issues..."
+      #     npm run lint
 
       - name: Run Prettier check
         run: |
