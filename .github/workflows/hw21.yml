@@ -1,0 +1,28 @@
+name: HW21 Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - HW21
+
+jobs:
+  hw21-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start application
+        run: |
+          npm start &
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run HW21 Playwright tests
+        run: npx playwright test HW21
