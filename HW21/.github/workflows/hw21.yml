@@ -1,26 +1,27 @@
-name: HW21 Tests
-
+name: Test
 on:
   workflow_dispatch:
   pull_request:
     branches:
       - HW21
+      - master
 
 jobs:
-  hw21:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build app
-        run: npm run build  # только если сервер требует
+      - name: Run application locally
+        run: |
+          npm start & 
 
-      - name: Install Playwright browsers
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run HW21 tests
-        run: npx playwright test --grep HW21
+      - name: Run Playwright tests
+        run: npx playwright test
