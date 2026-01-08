@@ -16,14 +16,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start app
-        run: |
-          npm start &
-          for i in {1..20}; do
-            curl http://localhost:3000 && break
-            sleep 3
-          done
-
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
