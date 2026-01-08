@@ -17,16 +17,16 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./QA/HW21
+        working-directory: HW21
 
       - name: Build app
         run: npm run build   # если нужен build
-        working-directory: ./QA/HW21
+        working-directory: HW21
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-        working-directory: ./QA/HW21
+        working-directory: HW21
 
       - name: Run HW21 tests
         run: npx playwright test
-        working-directory: ./QA/HW21
+        working-directory: HW21
