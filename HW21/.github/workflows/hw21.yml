@@ -20,8 +20,8 @@ jobs:
         run: |
           npm start & 
 
-      - name: Install Playwright Browsers
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run HW21 tests
+        run: npx playwright test --grep HW21
