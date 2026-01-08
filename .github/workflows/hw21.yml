@@ -5,7 +5,6 @@ on:
   pull_request:
     branches:
       - HW21
-      - master
 
 jobs:
   hw21:
@@ -17,14 +16,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build app
-        run: npm run build
-
       - name: Start app
-        run: npm start &
-      
-      - name: Wait for app
         run: |
+          npm start &
           for i in {1..20}; do
             curl http://localhost:3000 && break
             sleep 3
