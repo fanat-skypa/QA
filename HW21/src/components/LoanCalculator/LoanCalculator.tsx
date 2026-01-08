@@ -13,7 +13,8 @@ const LoanCalculator = forwardRef<HTMLDivElement, LoanCalculatorProps>(({ showLo
     const [period, setPeriod] = useState<string>('12');
     const [monthlyPayment, setMonthlyPayment] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [, setLoading] = useState<boolean>(false);
+
 
     const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
