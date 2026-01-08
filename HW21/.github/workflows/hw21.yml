@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Start app
         run: |
@@ -28,4 +28,4 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run HW21 tests
-        run: npx playwright test HW21
+        run: npx playwright test --grep HW21
