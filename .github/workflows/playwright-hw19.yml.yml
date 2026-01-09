@@ -1,0 +1,49 @@
+name: Playwright HW19
+
+on:
+  push:
+    branches: [ master, HW19 ]
+    paths:
+      - 'HW19/**'
+      - '.github/workflows/playwright-hw19.yml'
+
+  pull_request:
+    branches: [ master, HW19 ]
+    paths:
+      - 'HW19/**'
+      - '.github/workflows/playwright-hw19.yml'
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: HW19
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        env:
+          SERVICE_URL: ${{ secrets.SERVICE_URL }}
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: HW19/playwright-report/
+          retention-days: 30
