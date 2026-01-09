@@ -10,7 +10,7 @@ export default class FoundPage extends BasePage {
   constructor(page: Page, url?: string) {
     super(page, url ? url : SERVICE_URL)
     this.orderName = this.page.locator('.order-list__description').first()
-    this.activeStatus = this.page.locator('.status-list__status_active') // открытый/доставленный статус
+    this.activeStatus = this.page.locator('.status-list__status_active') // текущий статус заказа
   }
 
   // возвращает текст активного статуса
@@ -18,7 +18,6 @@ export default class FoundPage extends BasePage {
     return this.activeStatus.innerText()
   }
 
-  // метод проверки видимости всех ключевых элементов для TL-23-4
   async checkAllElementsVisible(): Promise<void> {
     await this.checkElementVisibility(this.orderName)
     await this.checkElementVisibility(this.activeStatus)

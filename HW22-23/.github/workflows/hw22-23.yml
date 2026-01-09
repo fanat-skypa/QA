@@ -3,8 +3,12 @@ name: Playwright Tests
 on:
   push:
     branches: [main, master, hw22-23]
+    paths:
+      - 'HW22-23/**'
   pull_request:
     branches: [main, master, hw22-23]
+    paths:
+      - 'HW22-23/**'
 
 jobs:
   test:
@@ -19,6 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: HW22-23
 
       # - name: Run ESLint check
       #   run: |
@@ -32,13 +37,15 @@ jobs:
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+        working-directory: HW22-23
 
       - name: Run Playwright tests in HW22-23
         env:
           URL: ${{ secrets.URL }}
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-        run: npx playwright test HW22-23 --reporter=list
+        run: npx playwright test
+        working-directory: HW22-23
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
