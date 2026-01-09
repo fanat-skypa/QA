@@ -1,0 +1,42 @@
+.monthly-payment {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.monthly-payment span{
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.input-box {
+  position: relative;
+  margin: 0.625em 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: -0.425em;
+  left: 0.6375em;
+}
+.period-label {
+  width: 36%;
+}
+
+.input-box select option {
+  font-size: .6em;
+}
+
+.min-max {
+  display: flex;
+  justify-content: space-between;
+}
+
+.min-max span {
+  font-weight: 600;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  margin-top: 0.625em;
+}
